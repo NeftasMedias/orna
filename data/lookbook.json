@@ -1,0 +1,51 @@
+[
+  {
+    "id": "look-01",
+    "title": "The Indigo Reverie",
+    "caption": "Elegant without being overpowering. A beautiful choice for workdays, intimate celebrations and every occasion that calls for effortless sophistication.",
+    "image": "",
+    "imageAlt": "The Indigo Reverie Maheshwari silk saree",
+    "productSlugs": ["indigo-reverie"],
+    "lookOfTheWeek": true,
+    "todo": ["photo"]
+  },
+  {
+    "id": "look-02",
+    "title": "The Maheshwari Silk Edit",
+    "caption": "Ocean blues, botanical prints, bold stripes and golden zari borders. Eight Maheshwari silks for workdays and celebrations.",
+    "image": "",
+    "imageAlt": "Maheshwari silk sarees from the Oṛna collection",
+    "productSlugs": [
+      "indigo-reverie",
+      "azure-blossom",
+      "scarlet-stripes",
+      "charcoal-charm",
+      "crimson-bloom",
+      "sunshine-and-noir",
+      "rust-leaf-stripe",
+      "earthy-floral"
+    ],
+    "lookOfTheWeek": false,
+    "todo": ["photo"]
+  },
+  {
+    "id": "look-03",
+    "title": "The Mul Cotton Edit",
+    "caption": "The kind of sarees you reach for on days when you want to look put together without trying too hard.",
+    "image": "",
+    "imageAlt": "Mul cotton sarees from the Oṛna collection",
+    "productSlugs": ["red-polka-dot-mul", "red-and-gold-check"],
+    "lookOfTheWeek": false,
+    "todo": ["photo", "products"]
+  },
+  {
+    "id": "look-04",
+    "title": "Colours for every mood",
+    "caption": "From timeless neutrals to joyful checks, bold reds and easy everyday hues.",
+    "image": "",
+    "imageAlt": "A range of Oṛna sarees in neutrals, checks and reds",
+    "productSlugs": ["quiet-contrast", "colour-check", "maroon-check", "olive-green"],
+    "lookOfTheWeek": false,
+    "todo": ["photo", "products"]
+  }
+]

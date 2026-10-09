@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* Oṛna design tokens. Light theme only (linen is part of the brand).
+   Contrast on linen #EFEBE4: navy 11.8:1, muted 4.9:1, indigo 5.2:1. Soft blue is decorative only.
+   Shape rule: photos have square corners; buttons, inputs and chips use --radius-control (4px).
+   Z-index scale: header 30, shop menu panel 40, mobile drawer 50. */
+
+@theme inline {
+  --font-serif: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-sans: var(--font-mukta), "Mukta", ui-sans-serif, system-ui, sans-serif;
+}
+
+@theme {
+  --color-linen: #efebe4;
+  --color-surface: #f7f4ef;
+  --color-navy: #1e2a4f;
+  --color-muted: #5a6482;
+  --color-indigo: #3e5fa8;
+  --color-indigo-deep: #324f91;
+  --color-soft-blue: #9fb4dd;
+  --color-line: rgb(30 42 79 / 0.14);
+  --color-danger: #9f2f2d;
+  --radius-control: 4px;
+}
+
+@layer base {
+  html {
+    background-color: var(--color-linen);
+    color: var(--color-navy);
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    /* Very light linen texture: static tiled noise, no repaint cost. */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.06'/%3E%3C/svg%3E");
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  ::selection {
+    background: var(--color-soft-blue);
+    color: var(--color-navy);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-indigo);
+    outline-offset: 3px;
+  }
+
+  summary {
+    cursor: pointer;
+    list-style: none;
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-control);
+    background: var(--color-indigo);
+    color: var(--color-surface);
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--color-indigo-deep);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-control);
+    border: 1px solid var(--color-navy);
+    color: var(--color-navy);
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, transform 0.15s ease;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-surface);
+  }
+
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+
+  .link-arrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 500;
+    color: var(--color-navy);
+    text-decoration: underline;
+    text-decoration-color: var(--color-soft-blue);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 6px;
+    transition: text-decoration-color 0.2s ease, color 0.2s ease;
+  }
+
+  .link-arrow:hover {
+    color: var(--color-indigo);
+    text-decoration-color: currentColor;
+  }
+
+  /* Placeholder markers, shown while site.showPlaceholderMarkers is true. */
+  .todo-marker {
+    display: inline-block;
+    padding: 0.05rem 0.4rem;
+    border: 1px dashed var(--color-muted);
+    border-radius: 2px;
+    background: var(--color-surface);
+    color: var(--color-navy);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 0.6875rem;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 1.5;
+    text-transform: none;
+    vertical-align: middle;
+    white-space: normal;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Gentle fade-up as sections enter the screen. Only runs in browsers that support
+   scroll-driven animations and for people who have not asked for reduced motion.
+   Everywhere else the content is simply visible. */
+@supports (animation-timeline: view()) {
+  @media screen and (prefers-reduced-motion: no-preference) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 40%;
+    }
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
